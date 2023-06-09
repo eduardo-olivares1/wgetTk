@@ -1,6 +1,6 @@
-from .module1 import func1
+from .module1 import App
 
 
 def main() -> None:
-    func1()
-    print("Hello world!")
+    app = App()
+    app.mainloop()
