@@ -3,6 +3,8 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showerror
+import subprocess
+import os
 
 logger = logging.getLogger(__name__)
 # set logging level for ENTIRE logger
@@ -27,7 +29,7 @@ class App(tk.Tk):
         super().__init__()
 
         self.title("wgetTk")
-        self.geometry("300x50")
+        self.geometry("300x600")
 
         # URL label
         self.url_label = ttk.Label(self, text="URL:")
@@ -46,4 +48,8 @@ class App(tk.Tk):
 
     def button_clicked(self):
         logger.debug("URL: %s", self.url.get())
-        showinfo(title="Information", message="Hello, Tkinter")
+        # wget -c -P ~/Downloads/ "https://domain.com/item"
+        subprocess.run(
+            ["wget", "-c", "-P", os.path.expanduser("~/Downloads/"), self.url.get()]
+        )
+        showinfo(title="Information", message="Download successful!")
