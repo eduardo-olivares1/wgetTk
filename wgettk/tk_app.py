@@ -3,7 +3,7 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showerror
-import subprocess
+from . import wget_wrapper
 import os
 
 logger = logging.getLogger(__name__)
@@ -48,8 +48,5 @@ class App(tk.Tk):
 
     def button_clicked(self):
         logger.debug("URL: %s", self.url.get())
-        # wget -c -P ~/Downloads/ "https://domain.com/item"
-        subprocess.run(
-            ["wget", "-c", "-P", os.path.expanduser("~/Downloads/"), self.url.get()]
-        )
+        wget_wrapper.basic_download(self.url.get())
         showinfo(title="Information", message="Download successful!")
