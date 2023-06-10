@@ -1,4 +1,4 @@
-from .module1 import App
+from .tk_app import App
 
 
 def main() -> None:
