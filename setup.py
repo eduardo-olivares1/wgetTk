@@ -9,5 +9,5 @@ setup(
     author="Eduardo Olivares",
     packages=find_packages(exclude=["tests", "testing*"]),
     install_requires=["requests"],
-    entry_points={"console_scripts": ["wgettk = app.__main__:main"]},
+    entry_points={"console_scripts": ["wgettk = wgettk.__main__:main"]},
 )
