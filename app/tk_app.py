@@ -29,7 +29,7 @@ class App(tk.Tk):
         super().__init__()
 
         self.title("wgetTk")
-        self.geometry("300x600")
+        self.geometry("300x300")
 
         # URL label
         self.url_label = ttk.Label(self, text="URL:")
@@ -42,7 +42,7 @@ class App(tk.Tk):
         self.url_entry.pack()
 
         # Button
-        self.button = ttk.Button(self, text="Click Me")
+        self.button = ttk.Button(self, text="Download")
         self.button["command"] = self.button_clicked
         self.button.pack()
 
