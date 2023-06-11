@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="app",
+    name="wgettk",
     version="0.0",
     description="App description",
     author="Eduardo Olivares",

@@ -2,8 +2,6 @@ import subprocess
 import os
 
 
-def basic_download(url):
+def basic_download(url, save_path):
     # wget -c -P ~/Downloads/ "https://domain.com/item"
-    subprocess.run(
-        ["wget", "-c", "-P", os.path.expanduser("~/Downloads/"), self.url.get()]
-    )
+    subprocess.run(["wget", "-c", "-P", save_path, url])
