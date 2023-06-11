@@ -46,7 +46,7 @@ class App(tk.Tk):
         self.button["command"] = self.button_clicked
         self.button.pack()
 
-    def button_clicked(self):
+    def button_clicked(self) -> None:
         logger.debug("Button pressed, downloading: %s....", self.url.get())
         download_successful = wget_wrapper.basic_download(
             self.url.get(), os.path.expanduser("~/Downloads/")
