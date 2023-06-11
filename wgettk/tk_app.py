@@ -47,6 +47,14 @@ class App(tk.Tk):
         self.button.pack()
 
     def button_clicked(self):
-        logger.debug("URL: %s", self.url.get())
-        wget_wrapper.basic_download(self.url.get(), os.path.expanduser("~/Downloads/"))
-        showinfo(title="Information", message="Download successful!")
+        logger.debug("Button pressed, downloading: %s....", self.url.get())
+        download_successful = wget_wrapper.basic_download(
+            self.url.get(), os.path.expanduser("~/Downloads/")
+        )
+        if download_successful:
+            showinfo(title="Information", message="Download successful!")
+        else:
+            showerror(
+                title="Error",
+                message="Unable to download file. Check the url and try again",
+            )
