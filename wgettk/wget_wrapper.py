@@ -39,6 +39,7 @@ def basic_download(url: str, save_path: str) -> bool:
             ["wget", "-c", "-P", save_path, url],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.STDOUT,
+            check=True,
         )
         logger.debug("Downloaded %s to %s", url, save_path)
         return True
