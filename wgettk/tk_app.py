@@ -48,5 +48,5 @@ class App(tk.Tk):
 
     def button_clicked(self):
         logger.debug("URL: %s", self.url.get())
-        wget_wrapper.basic_download(self.url.get())
+        wget_wrapper.basic_download(self.url.get(),os.path.expanduser("~/Downloads/"))
         showinfo(title="Information", message="Download successful!")
