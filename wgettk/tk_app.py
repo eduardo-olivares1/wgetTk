@@ -29,22 +29,34 @@ class App(tk.Tk):
         super().__init__()
 
         self.title("wgetTk")
-        self.geometry("300x300")
+        self.geometry("300x75")
+        self.resizable(0, 0)
+        self.create_grid()
+        self.create_widgets()
+
+    def create_grid(self) -> None:
+        logger.debug("Creating grid....")
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=3)
+        self.columnconfigure(2, weight=2)
+
+    def create_widgets(self) -> None:
+        logger.debug("Loading widgets....")
 
         # URL label
         self.url_label = ttk.Label(self, text="URL:")
-        self.url_label.pack()
+        self.url_label.grid(column=0, row=0, sticky=tk.W, padx=5, pady=5)
 
         # URL entry
         self.url = tk.StringVar()
         self.url_entry = ttk.Entry(self, textvariable=self.url)
         self.url_entry.focus()
-        self.url_entry.pack()
+        self.url_entry.grid(column=1, row=0, sticky=tk.E, padx=5, pady=5)
 
         # Button
         self.button = ttk.Button(self, text="Download")
         self.button["command"] = self.button_clicked
-        self.button.pack()
+        self.button.grid(column=2, row=0, sticky=tk.E, padx=5, pady=5)
 
     def button_clicked(self) -> None:
         logger.debug("Button pressed, downloading: %s....", self.url.get())
