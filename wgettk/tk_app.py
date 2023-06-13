@@ -29,8 +29,7 @@ class App(tk.Tk):
         super().__init__()
 
         self.title("wgetTk")
-        self.geometry("300x75")
-        self.resizable(0, 0)
+        self.geometry("510x50")
         self.create_grid()
         self.create_widgets()
 
@@ -39,6 +38,7 @@ class App(tk.Tk):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=3)
         self.columnconfigure(2, weight=2)
+        self.columnconfigure(3, weight=2)
 
     def create_widgets(self) -> None:
         logger.debug("Loading widgets....")
@@ -57,6 +57,20 @@ class App(tk.Tk):
         self.button = ttk.Button(self, text="Download")
         self.button["command"] = self.button_clicked
         self.button.grid(column=2, row=0, sticky=tk.E, padx=5, pady=5)
+
+        # Dropdown
+        self.dropdown_choice = tk.StringVar()
+        dropdown_arr = [
+            "Single File",
+            "Folder",
+            "Folder - Recursive",
+            "All Images",
+            "All Images - Recursive",
+        ]
+        self.dropdown = ttk.OptionMenu(
+            self, self.dropdown_choice, dropdown_arr[0], *dropdown_arr
+        )
+        self.dropdown.grid(column=3, row=0, sticky=tk.W)
 
     def button_clicked(self) -> None:
         logger.debug("Button pressed, downloading: %s....", self.url.get())
